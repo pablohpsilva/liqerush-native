@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import R from 'ramda'
+import {
+  HashRouter,
+  Route,
+} from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import Home from  './components/Home'
 
-export default App;
+// class App extends Component {
+//   render() {
+//     return (
+//       <HashRouter>
+//         <div>
+//           <Route exact path="/" component={Home}/>
+//         </div>
+//       </HashRouter>
+//     )
+//   }
+// }
+
+const App = (appState) => (
+  <HashRouter>
+    <div>
+      childrens goes here:
+      <Route exact path="/" component={Home}/>
+    </div>
+  </HashRouter>
+)
+
+App.render = R.curry((node, props) => ReactDOM.render(<App {...props}/>, node))
+
+export default App
