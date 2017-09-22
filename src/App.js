@@ -28,7 +28,6 @@ const App = (appState) => (
     </div>
   </HashRouter>
 )
-
 App.render = R.curry((node, props) => ReactDOM.render(<App {...props}/>, node))
 
 export default App
